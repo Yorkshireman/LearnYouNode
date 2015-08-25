@@ -1,17 +1,8 @@
-var http = require("http");
+var numbers = process.argv.slice(2);
 
-var httpPath = process.argv[2];
+var sum = 0;
+for(i = 0; i < numbers.length; i++) {
+	sum += Number(numbers[i]);
+}
 
-http.get(httpPath, function(response) {
-  response.setEncoding('utf8');
-  
-  var text = '';
-  response.on('data', function(chunk) {
-    text += chunk;
-  });
-
-  response.on('end', function() {
-    console.log(text.length);
-    console.log(text);
-  });
-});
+console.log(sum);
