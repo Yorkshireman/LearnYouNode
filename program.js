@@ -1,10 +1,9 @@
-var mymodule = require('./mymodule');
+var http = require("http");
 
-var filePath = process.argv[2];
-var type = process.argv[3];
+var httpPath = process.argv[2];
 
-mymodule(filePath, type, function(err, array) {
-  array.forEach(function(file) {
-    console.log(file.toString());
-  })
+http.get(httpPath, function(response) {
+  response.setEncoding('utf8');
+  response.on('data', console.log);
+  response.on('error', console.log);
 });
